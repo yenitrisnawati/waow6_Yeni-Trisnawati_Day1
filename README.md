@@ -9,65 +9,65 @@ Aplikasi ini dibuat untuk memenuhi kebutuhan tugas WAOWS6 – Day 1.
 🌟 Fitur Utama
 🔐 Autentikasi User (Wajib)
 
-Login
+-Login
 
-Register
+-Register
 
-Logout
+-Logout
 
 📦 CRUD Products
 
-Tambah produk
+-Tambah produk
 
-Lihat semua produk
+-Lihat semua produk
 
-Hapus produk
+-Hapus produk
 
-(Update opsional – tidak diwajibkan)
+-(Update opsional – tidak diwajibkan)
 
 👤 CRUD Customers
 
-Tambah customer
+-Tambah customer
 
-Lihat daftar customer
+-Lihat daftar customer
 
-Hapus customer
+-Hapus customer
 
-(Update opsional)
+-(Update opsional)
 
 💰 CRUD Transactions
 
-Tambah transaksi
+-Tambah transaksi
 
-Menampilkan daftar transaksi
+-Menampilkan daftar transaksi
 
-Menghitung total transaksi otomatis
+-Menghitung total transaksi otomatis
 
 📊 Dashboard
 
-Total users
+-Total users
 
-Total produk
+-Total produk
 
-Total customer
+-Total customer
 
-Total transaksi
+-Total transaksi
 
-Total penjualan hari ini
+-Total penjualan hari ini
 
 🗄 Teknologi yang Digunakan
 
-Python 3.8+
+-Python 3.14
 
-Flask
+-Flask
 
-Flask SQLAlchemy
+-Flask SQLAlchemy
 
-SQLite Database
+-SQLite Database
 
-HTML + CSS custom (tanpa framework)
+-HTML + CSS custom (tanpa framework)
 
-Jinja2 Template Engine
+-Jinja2 Template Engine
 
 📁 Struktur Proyek
 project/
@@ -152,19 +152,23 @@ Relasi:
 1 Product → banyak TransactionDetails
 
 Screenshot Aplikasi:
+-Login: <img width="2856" height="1502" alt="Screenshot 2025-11-23 002013" src="https://github.com/user-attachments/assets/9b551698-2d5e-47a3-a1d8-a146ef2e6f4b" />
+-Register: <img width="2812" height="1504" alt="Screenshot 2025-11-23 002147" src="https://github.com/user-attachments/assets/d9c5f56e-034c-485b-8e3a-3e6bca44b98d" />
+-Dashboard: <img width="2856" height="1511" alt="Screenshot 2025-11-23 002214" src="https://github.com/user-attachments/assets/4807a138-342f-47c1-932f-85b62f3b6160" />
+-Product: <img width="2851" height="1499" alt="Screenshot 2025-11-23 002232" src="https://github.com/user-attachments/assets/a9c2f299-9c31-41a8-9131-01e4502a1dd3" />
+-Customers: <img width="2816" height="1488" alt="Screenshot 2025-11-23 002810" src="https://github.com/user-attachments/assets/520f7c06-ae5a-4e75-a581-29a7c9b078a0" />
+-Trasaction: <img width="2822" height="1491" alt="Screenshot 2025-11-23 002856" src="https://github.com/user-attachments/assets/61899ce4-d8b5-43a8-b94e-b225defe45ef" />
 
 📌 Catatan
 
-Database otomatis dibuat saat aplikasi pertama dijalankan.
+-Database otomatis dibuat saat aplikasi pertama dijalankan.
 
-Jika ingin reset database, hapus file app.db.
+-Jika ingin reset database, hapus file app.db.
 
 CRUD update bersifat opsional (sesuai instruksi tugas).
 
 🏁 Kesimpulan
-
 Project ini sudah memenuhi semua kriteria WAOWS Day 1:
-
 ✔ Autentikasi (Login, Register, Logout)
 ✔ CRUD (Products, Customers, Transactions)
 ✔ Terhubung database

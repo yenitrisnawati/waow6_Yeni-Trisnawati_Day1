@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Transaksi • Mini Project</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "Poppins", sans-serif;
+            background: #050816;
+            color: #e5e7eb;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 40px 16px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 24px;
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #9ca3af;
+        }
+
+        .back-link {
+            font-size: 14px;
+            color: #a5b4fc;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1.05fr 1.7fr;
+            gap: 24px;
+        }
+
+        .card {
+            background: radial-gradient(circle at top left, rgba(79, 70, 229, 0.22), transparent 55%),
+                        rgba(15, 23, 42, 0.94);
+            border-radius: 20px;
+            padding: 20px 22px;
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            box-shadow: 0 18px 45px rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+        }
+
+        .card-title {
+            font-size: 17px;
+            font-weight: 500;
+            margin-bottom: 14px;
+        }
+
+        .field {
+            margin-bottom: 14px;
+        }
+
+        .field label {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 6px;
+            color: #d1d5db;
+        }
+
+        select,
+        input[type="number"] {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(156, 163, 175, 0.7);
+            background: rgba(15, 23, 42, 0.98);
+            color: #e5e7eb;
+            font-size: 14px;
+        }
+
+        select:focus,
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+        }
+
+        .btn-primary {
+            width: 100%;
+            margin-top: 8px;
+            padding: 11px 14px;
+            border-radius: 10px;
+            border: none;
+            font-size: 14px;
+            font-weight: 500;
+            color: #ffffff;
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.65);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 14px 32px rgba(79, 70, 229, 0.8);
+        }
+
+        /* TABLE */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            margin-top: 6px;
+        }
+
+        th, td {
+            padding: 10px 10px;
+            text-align: left;
+        }
+
+        th {
+            font-weight: 500;
+            color: #9ca3af;
+            background: rgba(30, 41, 59, 0.95);
+        }
+
+        tr:nth-child(even) {
+            background: rgba(15, 23, 42, 0.94);
+        }
+
+        tr:nth-child(odd) {
+            background: rgba(15, 23, 42, 0.86);
+        }
+
+        .empty {
+            font-size: 13px;
+            color: #9ca3af;
+            padding-top: 6px;
+        }
+
+        @media (max-width: 860px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div>
+            <div class="title">Kelola Transaksi</div>
+            <div class="subtitle">Catat transaksi dan lihat riwayat pembelian customer.</div>
+        </div>
+        <a href="/" class="back-link">← Kembali ke Dashboard</a>
+    </div>
+
+    <div class="grid">
+        <!-- FORM TRANSAKSI -->
+        <div class="card">
+            <div class="card-title">Tambah Transaksi Baru</div>
+
+            <form method="POST" action="/transactions/add">
+                <div class="field">
+                    <label>Pilih Customer</label>
+                    <select name="customer_id" required>
+                        <option value="">-- Pilih Customer --</option>
+                        {% for c in customers %}
+                            <option value="{{ c.id }}">
+                                {{ c.gender }} • umur {{ c.age }} • income {{ c.annual_income }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Pilih Produk</label>
+                    <select name="product_id" required>
+                        <option value="">-- Pilih Produk --</option>
+                        {% for p in products %}
+                            <option value="{{ p.id }}">
+                                {{ p.name }} — Rp {{ "{:,.0f}".format(p.price) }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Jumlah</label>
+                    <input type="number" name="quantity" min="1" value="1" required>
+                </div>
+
+                <button class="btn-primary">Tambah Transaksi</button>
+            </form>
+        </div>
+
+        <!-- TABEL TRANSAKSI -->
+        <div class="card">
+            <div class="card-title">Daftar Transaksi</div>
+
+            {% if transactions and transactions|length > 0 %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Customer</th>
+                            <th>Total</th>
+                            <th>Tanggal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for t in transactions %}
+                        <tr>
+                            <td>{{ t.id }}</td>
+                            <td>{{ t.customer.gender }} (umur {{ t.customer.age }})</td>
+                            <td>Rp {{ "{:,.0f}".format(t.total_amount) }}</td>
+                            <td>{{ t.transaction_date.strftime("%d-%m-%Y %H:%M") }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p class="empty">Belum ada transaksi. Tambah transaksi melalui form di sebelah kiri.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

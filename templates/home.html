@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard • Mini Project</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f0f17, #1b1c26);
+            min-height: 100vh;
+            color: #fff;
+            padding: 20px;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            width: 100%;
+            padding: 18px 26px;
+            border-radius: 18px;
+            margin-bottom: 26px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.45);
+        }
+
+        .nav-title {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .nav-right a {
+            color: #9db4ff;
+            margin-left: 18px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .nav-right a:hover {
+            color: #dde5ff;
+        }
+
+        /* GRID STATISTICS */
+        .stats-grid {
+            margin-top: 12px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .card {
+            padding: 24px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 18px;
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transition: 0.25s;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.45);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 0 35px rgba(120, 160, 255, 0.4);
+        }
+
+        .stat-title {
+            font-size: 14px;
+            color: #d1d5db;
+        }
+
+        .stat-number {
+            margin-top: 10px;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        /* QUICK ACTIONS */
+        .actions {
+            margin-top: 35px;
+        }
+
+        .actions h2 {
+            font-size: 20px;
+            margin-bottom: 14px;
+        }
+
+        .btn {
+            padding: 14px 26px;
+            background: linear-gradient(135deg, #5b61ff, #3d3ff5);
+            border: none;
+            color: #fff;
+            border-radius: 12px;
+            text-decoration: none;
+            margin-right: 16px;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 18px rgba(91, 97, 255, 0.6);
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <div class="nav-title">🚀 Dashboard Mini Project</div>
+        <div class="nav-right">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/products">Produk</a>
+            <a href="/customers">Customers</a>
+            <a href="/transactions">Transaksi</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats-grid">
+
+        <div class="card">
+              <div class="stat-title">Total Penjualan Hari Ini</div>
+              <div class="stat-number">
+        Rp {{ "{:,.0f}".format(sales_today) }}
+        </div>
+
+
+        <div class="card">
+            <div class="stat-title">Total Produk</div>
+            <div class="stat-number">{{ total_products }}</div>
+        </div>
+
+        <div class="card">
+            <div class="stat-title">Total Users</div>
+            <div class="stat-number">{{ total_users }}</div>
+        </div>
+
+        <div class="card">
+            <div class="stat-title">Total Transaksi</div>
+            <div class="stat-number">{{ total_transactions }}</div>
+        </div>
+
+    </div>
+
+    <!-- QUICK ACTIONS -->
+    <div class="actions">
+        <h2>Quick Actions</h2>
+
+        <a class="btn" href="/products">Kelola Produk</a>
+        <a class="btn" href="/customers">Kelola Customers</a>
+    </div>
+
+</body>
+</html>
+
+
+

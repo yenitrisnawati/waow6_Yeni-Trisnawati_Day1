@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Customers • Mini Project</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "Poppins", sans-serif;
+            background: #050816;
+            color: #e5e7eb;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 40px 16px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 24px;
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #9ca3af;
+        }
+
+        .back-link {
+            font-size: 14px;
+            color: #a5b4fc;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1.05fr 1.7fr;
+            gap: 24px;
+        }
+
+        .card {
+            background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.25), transparent 55%),
+                        rgba(15, 23, 42, 0.94);
+            border-radius: 20px;
+            padding: 20px 22px;
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            box-shadow: 0 18px 45px rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+        }
+
+        .card-title {
+            font-size: 17px;
+            font-weight: 500;
+            margin-bottom: 14px;
+        }
+
+        .field {
+            margin-bottom: 14px;
+        }
+
+        .field label {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 6px;
+            color: #d1d5db;
+        }
+
+        .input,
+        select {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(156, 163, 175, 0.7);
+            background: rgba(15, 23, 42, 0.98);
+            color: #e5e7eb;
+            font-size: 14px;
+        }
+
+        .input:focus,
+        select:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+        }
+
+        .btn-primary {
+            width: 100%;
+            margin-top: 8px;
+            padding: 11px 14px;
+            border-radius: 10px;
+            border: none;
+            font-size: 14px;
+            font-weight: 500;
+            color: #ffffff;
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.65);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 14px 32px rgba(79, 70, 229, 0.8);
+        }
+
+        /* TABLE */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            margin-top: 6px;
+        }
+
+        th, td {
+            padding: 10px 10px;
+            text-align: left;
+        }
+
+        th {
+            font-weight: 500;
+            color: #9ca3af;
+            background: rgba(30, 41, 59, 0.95);
+        }
+
+        tr:nth-child(even) {
+            background: rgba(15, 23, 42, 0.94);
+        }
+
+        tr:nth-child(odd) {
+            background: rgba(15, 23, 42, 0.86);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 999px;
+            font-size: 11px;
+            background: rgba(59, 130, 246, 0.15);
+            color: #bfdbfe;
+        }
+
+        .btn-delete {
+            font-size: 12px;
+            color: #fca5a5;
+            text-decoration: none;
+        }
+
+        .btn-delete:hover {
+            color: #fecaca;
+            text-decoration: underline;
+        }
+
+        .empty {
+            font-size: 13px;
+            color: #9ca3af;
+            padding-top: 6px;
+        }
+
+        @media (max-width: 860px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div>
+            <div class="title">Kelola Customers</div>
+            <div class="subtitle">Tambah dan kelola data customer untuk kebutuhan analisis & transaksi.</div>
+        </div>
+        <a href="/" class="back-link">← Kembali ke Dashboard</a>
+    </div>
+
+    <div class="grid">
+        <!-- FORM CUSTOMER -->
+        <div class="card">
+            <div class="card-title">Tambah Customer Baru</div>
+
+            <form method="POST" action="/customers/add">
+                <div class="field">
+                    <label>Gender</label>
+                    <select name="gender" required>
+                        <option value="Laki-laki">Laki-laki</option>
+                        <option value="Perempuan">Perempuan</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Umur</label>
+                    <input type="number" class="input" name="age" min="1" placeholder="Contoh: 23" required>
+                </div>
+
+                <div class="field">
+                    <label>Income Tahunan (Rp)</label>
+                    <input type="number" class="input" name="annual_income" min="0" placeholder="Contoh: 54000" required>
+                </div>
+
+                <div class="field">
+                    <label>Spending Score</label>
+                    <input type="number" class="input" name="spending_score" min="0" max="100" placeholder="Contoh: 60" required>
+                </div>
+
+                <button class="btn-primary">Tambah Customer</button>
+            </form>
+        </div>
+
+        <!-- TABEL CUSTOMERS -->
+        <div class="card">
+            <div class="card-title">Daftar Customers</div>
+
+            {% if customers and customers|length > 0 %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Gender</th>
+                            <th>Umur</th>
+                            <th>Income</th>
+                            <th>Spending</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for c in customers %}
+                        <tr>
+                            <td>{{ c.id }}</td>
+                            <td>{{ c.gender }}</td>
+                            <td><span class="badge">{{ c.age }}</span></td>
+                            <td>Rp {{ "{:,.0f}".format(c.annual_income) }}</td>
+                            <td>{{ c.spending_score }}</td>
+                            <td>
+                                <a href="/customers/delete/{{ c.id }}"
+                                   class="btn-delete"
+                                   onclick="return confirm('Yakin hapus customer ini?')">
+                                    Hapus
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p class="empty">Belum ada customer. Tambah dulu lewat form di sebelah kiri.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

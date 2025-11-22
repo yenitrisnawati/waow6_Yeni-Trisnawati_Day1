@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <title>Register • Mini Project</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(135deg, #1d1f27, #0c0d11);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Green glow */
+        body::before {
+            content: "";
+            position: absolute;
+            width: 1500px;
+            height: 1500px;
+            background: radial-gradient(circle, #22c55e 0%, transparent 60%);
+            filter: blur(200px);
+            animation: move 10s infinite alternate ease-in-out;
+        }
+
+        @keyframes move {
+            0% { transform: translate(30%, -20%); }
+            100% { transform: translate(-20%, 40%); }
+        }
+
+        .card {
+            width: 380px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 32px 28px;
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 0 45px rgba(0, 0, 0, 0.4);
+            z-index: 2;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 26px;
+            color: white;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #cbd5e1;
+            margin-bottom: 24px;
+        }
+
+        label {
+            color: #e2e8f0;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .input {
+            width: 100%;
+            height: 48px;
+            padding: 0 16px;
+            margin-bottom: 18px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 15px;
+        }
+
+        .input:focus {
+            outline: none;
+            border-color: #22c55e;
+            box-shadow: 0 0 12px rgba(34, 197, 94, 0.4);
+        }
+
+        /* -------------------------------- */
+        /*       MATA TRANSPARAN STYLE      */
+        /* -------------------------------- */
+        .password-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .password-wrapper .input {
+            padding-right: 45px;
+        }
+
+        .toggle {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+
+            width: 22px;
+            height: 22px;
+
+            opacity: 0.45;  /* transparan */
+            transition: 0.2s ease;
+        }
+
+        .toggle:hover {
+            opacity: 1;
+            transform: translateY(-50%) scale(1.12);
+        }
+
+        /* BUTTON */
+        .btn {
+            width: 100%;
+            height: 48px;
+            border-radius: 12px;
+            border: none;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 18px rgba(34, 197, 94, 0.6);
+        }
+
+        .footer {
+            margin-top: 18px;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: #60a5fa;
+            font-weight: 500;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <div class="title">Buat Akun</div>
+        <div class="subtitle">Daftar dulu untuk mengelola produkmu.</div>
+
+        <form method="POST" action="/register">
+
+            <label>Email</label>
+            <input type="email" name="email" class="input" placeholder="Masukkan email" required>
+
+            <label>Password</label>
+
+            <!-- WRAPPER + MATA -->
+            <div class="password-wrapper">
+                <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    class="input"
+                    placeholder="Masukkan password"
+                    required
+                >
+
+                <!-- Ikon mata transparan -->
+                <svg class="toggle" onclick="showPassword()" viewBox="0 0 24 24" fill="none">
+                    <path
+                        d="M12 5C7 5 3.3 8.1 2 12c1.3 3.9 5 7 10 7s8.7-3.1 10-7c-1.3-3.9-5-7-10-7z"
+                        stroke="white" stroke-width="1.7" opacity="0.6"/>
+                    <circle cx="12" cy="12" r="3.5"
+                        stroke="white" stroke-width="1.7" opacity="0.8"/>
+                </svg>
+            </div>
+
+            <button class="btn">Daftar Sekarang</button>
+        </form>
+
+        <div class="footer">
+            Sudah punya akun? <a href="/login">Login di sini</a>
+        </div>
+    </div>
+
+<script>
+function showPassword() {
+    const input = document.getElementById("password");
+    input.type = (input.type === "password") ? "text" : "password";
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
